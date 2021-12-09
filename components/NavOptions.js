@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native'
 const NavOptions = () => {
     return (
         <View>
-            <Text></Text>
+            <Text style={tw`text-green-900 font-bold text-l`}>my nav</Text>
         </View>
     )
 }
