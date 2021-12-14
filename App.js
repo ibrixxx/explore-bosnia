@@ -1,19 +1,23 @@
+import { NavigationContainer } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { Provider} from 'react-redux';
+import { StyleSheet, View } from 'react-native';
+import 'react-native-gesture-handler';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { Provider } from 'react-redux';
+import MainStack from './navigation/MainStack';
 import HomeScreen from './screens/HomeScreen';
 import { sotre } from './store';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
+
 
 export default function App() {
   return (
     <Provider store={sotre}>
       <SafeAreaProvider>
-        <View style={styles.container}>
-          <StatusBar style="auto" />
-          <HomeScreen />
-        </View>
+        <StatusBar style="auto" />
+        <NavigationContainer>
+            <MainStack />
+        </NavigationContainer>
       </SafeAreaProvider>
     </Provider>
   );
