@@ -1,15 +1,15 @@
 import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from '../screens/HomeScreen';
-import NavOptions from '../components/NavOptions';
+import MapScreen from '../screens/MapScreen';
 
 const Stack = createStackNavigator();
 
 const MainStack = () => {
     return (
-        <Stack.Navigator initialRouteName={'Home'}>
+        <Stack.Navigator initialRouteName={'Home'} screenOptions={{headerShown: false}}>
             <Stack.Screen name="Home" component={HomeScreen} />
-            <Stack.Screen name="Notifications" component={NavOptions} />
+            <Stack.Screen name="Map" component={MapScreen} />
         </Stack.Navigator>
     )
 }

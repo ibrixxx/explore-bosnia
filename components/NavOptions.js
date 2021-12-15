@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/core';
 import React from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Icon } from 'react-native-elements';
@@ -5,9 +6,11 @@ import tw from 'twrnc';
 
 
 const NavOptions = () => {
+    const navigation = useNavigation();
+
     return (
-        <TouchableOpacity>
-            <View>
+        <View style={[{justifyContent: 'center', alignItems: 'center'}]}>
+            <TouchableOpacity onPress={() => navigation.navigate('Map')} style={tw`border-2 border-black rounded-md p-4`}>
                 <Image 
                     style={{width: 120, height: 120, resizeMode: 'contain'}}
                     source={{uri: 'https://www.ccarprice.com/products/Mercedes_AMG_GT_63_S_E_Performance_2023_price.jpg'}}
@@ -19,8 +22,8 @@ const NavOptions = () => {
                     color={'white'}
                     type={'antdesign'}
                 />
-            </View>
-        </TouchableOpacity>
+            </TouchableOpacity>
+        </View>
     )
 }
 

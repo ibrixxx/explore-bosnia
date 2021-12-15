@@ -1,16 +1,15 @@
-import React from 'react'
-import { Button, SafeAreaView, StyleSheet, Text, View } from 'react-native'
+import { GOOGLE_MAPS_API_KEY } from '@env';
+import React from 'react';
+import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
-import tw from 'twrnc';
-import { GOOGLE_MAPS_API_KEY } from '@env'
 import { useDispatch } from 'react-redux';
+import tw from 'twrnc';
+import NavOptions from '../components/NavOptions';
 import { setDestination, setOrigin } from '../slices/navSlice';
-import { useNavigation } from '@react-navigation/core';
 
 
 const HomeScreen = () => {
     const dispatch = useDispatch();
-    const navigation = useNavigation();
 
     return (
         <SafeAreaView style={tw`bg-white h-full`}>
@@ -28,6 +27,14 @@ const HomeScreen = () => {
                     styles={{
                         container: {
                             flex: 0,
+                            alignItems: 'center',
+                            borderWidth: 2,
+                            borderTopColor: 'dodgerblue',
+                            borderBottomColor: 'white',
+                            borderLeftColor: 'white',
+                            borderRightColor: 'white',
+                            borderRadius: 5,
+                            margin: 14
                         },
                         textInput: {
                             fontSize: 18,
@@ -43,7 +50,7 @@ const HomeScreen = () => {
                         language: 'en',
                     }}
                     />
-                    <Button title={'nav'} onPress={() => navigation.navigate('Notifications')} />
+                    <NavOptions />
             </View>
         </SafeAreaView>
     )
