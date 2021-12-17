@@ -2,14 +2,15 @@ import { GOOGLE_MAPS_API_KEY } from '@env';
 import React from 'react';
 import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import tw from 'twrnc';
 import NavOptions from '../components/NavOptions';
-import { setDestination, setOrigin } from '../slices/navSlice';
+import { selectOrigin, setDestination, setOrigin } from '../slices/navSlice';
 
 
 const HomeScreen = () => {
     const dispatch = useDispatch();
+    const origin = useSelector(selectOrigin)
 
     return (
         <SafeAreaView style={tw`bg-white h-full`}>
@@ -19,10 +20,10 @@ const HomeScreen = () => {
                     placeholder='Search'
                     onPress={(data, details = null) => {
                         dispatch(setOrigin({
-                            location: details.geometry.location,
+                            location: details?.geometry.location,
+                            description: data.description,
                         }))
                         dispatch(setDestination(null))
-                        console.log(data, details);
                     }}
                     styles={{
                         container: {

@@ -2,15 +2,22 @@ import { useNavigation } from '@react-navigation/core';
 import React from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { Icon } from 'react-native-elements';
+import { useSelector } from 'react-redux';
 import tw from 'twrnc';
+import { selectOrigin } from '../slices/navSlice';
 
 
 const NavOptions = () => {
     const navigation = useNavigation();
+    const origin = useSelector(selectOrigin)
 
     return (
-        <View style={[{justifyContent: 'center', alignItems: 'center'}]}>
-            <TouchableOpacity onPress={() => navigation.navigate('Map')} style={tw`border-2 border-black rounded-md p-4`}>
+        <View style={[{justifyContent: 'center', alignItems: 'center'}, tw`${!origin && 'opacity-40'}`]}>
+            <TouchableOpacity 
+                onPress={() => navigation.navigate('Map')} 
+                style={tw`border-2 border-black rounded-md p-4`}
+                disabled={!origin}
+                >
                 <Image 
                     style={{width: 120, height: 120, resizeMode: 'contain'}}
                     source={{uri: 'https://www.ccarprice.com/products/Mercedes_AMG_GT_63_S_E_Performance_2023_price.jpg'}}
