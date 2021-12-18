@@ -14,12 +14,12 @@ const NavOptions = () => {
     return (
         <View style={[{justifyContent: 'center', alignItems: 'center'}, tw`${!origin && 'opacity-40'}`]}>
             <TouchableOpacity 
-                onPress={() => navigation.navigate('Map')} 
-                style={tw`border-2 border-black rounded-md p-4`}
+                onPress={() => navigation.navigate('Nav')} 
+                style={tw`border-2 border-black rounded-md p-4 bg-gray-200`}
                 disabled={!origin}
                 >
                 <Image 
-                    style={{width: 120, height: 120, resizeMode: 'contain'}}
+                    style={{width: 140, height: 120, resizeMode: 'contain', margin: 0, padding: 0, top: 0}}
                     source={{uri: 'https://www.ccarprice.com/products/Mercedes_AMG_GT_63_S_E_Performance_2023_price.jpg'}}
                 />
                 <Text style={tw`mt-2 font-semibold text-lg`}>Get a ride</Text>

@@ -5,6 +5,7 @@ import { StyleSheet, View } from 'react-native';
 import 'react-native-gesture-handler';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Provider } from 'react-redux';
+import AuthProvider from './authProvider/AuthProvider';
 import MainStack from './navigation/MainStack';
 import HomeScreen from './screens/HomeScreen';
 import { sotre } from './store';
@@ -13,12 +14,14 @@ import { sotre } from './store';
 export default function App() {
   return (
     <Provider store={sotre}>
-      <SafeAreaProvider>
-        <StatusBar style="auto" />
-        <NavigationContainer>
-            <MainStack />
-        </NavigationContainer>
-      </SafeAreaProvider>
+      <AuthProvider>
+        <SafeAreaProvider>
+          <StatusBar style="auto" />
+          <NavigationContainer>
+              <MainStack />
+          </NavigationContainer>
+        </SafeAreaProvider>
+      </AuthProvider>
     </Provider>
   );
 }

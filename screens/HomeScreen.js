@@ -2,15 +2,17 @@ import { GOOGLE_MAPS_API_KEY } from '@env';
 import React from 'react';
 import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import tw from 'twrnc';
+import { useUser, useUserUpdate } from '../authProvider/AuthProvider';
 import NavOptions from '../components/NavOptions';
-import { selectOrigin, setDestination, setOrigin } from '../slices/navSlice';
+import { setOrigin } from '../slices/navSlice';
 
 
 const HomeScreen = () => {
     const dispatch = useDispatch();
-    const origin = useSelector(selectOrigin)
+    const user = useUser()
+    const setUser = useUserUpdate();
 
     return (
         <SafeAreaView style={tw`bg-white h-full`}>
@@ -23,7 +25,10 @@ const HomeScreen = () => {
                             location: details?.geometry.location,
                             description: data.description,
                         }))
-                        dispatch(setDestination(null))
+                        setUser({...user, origin: {
+                            location: details?.geometry.location,
+                            description: data.description,
+                        }})
                     }}
                     styles={{
                         container: {

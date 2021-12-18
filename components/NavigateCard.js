@@ -1,11 +1,68 @@
-import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
-import { SafeAreaView } from 'react-native-safe-area-context'
+import { GOOGLE_MAPS_API_KEY } from '@env';
+import { useNavigation } from '@react-navigation/core';
+import React from 'react';
+import { Text, View } from 'react-native';
+import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { useDispatch } from 'react-redux';
+import tw from 'twrnc';
+import { useUser, useUserUpdate } from '../authProvider/AuthProvider';
+import { setDestination } from '../slices/navSlice';
+
+
 
 const NavigateCard = () => {
+    const dispatch = useDispatch()
+    const navigation = useNavigation()
+    const user = useUser()
+    const setUser = useUserUpdate()
+
     return (
-        <SafeAreaView>
-            <Text>NC</Text>
+        <SafeAreaView style={tw`bg-white flex-1`}>
+            <Text style={tw`text-center text-xl py-5`}>Good morning, username</Text>
+            <View style={tw`border-t border-gray-200 flex-shrink`}>
+                <View>
+                    <GooglePlacesAutocomplete
+                        placeholder='Where to?'
+                        onPress={(data, details = null) => {
+                            dispatch(setDestination({
+                                localtion: details?.geometry.location,
+                                description: data.description,
+                            }))
+                            setUser({...user, destination: {
+                                localtion: details?.geometry.location,
+                                description: data.description,
+                            }})
+                            navigation.navigate('Map')
+                        }}
+                        styles={{
+                            container: {
+                                flex: 0,
+                                paddingTop: 20,
+                                backgroundColor: 'white',
+                            },
+                            textInput: {
+                                fontSize: 18,
+                                borderRadius: 0,
+                                backgroundColor: 'lightgray'
+                            },
+                            textInputContainer: {
+                                paddingBottom: 0,
+                                paddingHorizontal: 20,
+                            }
+                        }}
+                        fetchDetails={true}
+                        enablePoweredByContainer={false}
+                        minLength={2}
+                        nearbyPlacesAPI='GooglePlacesSearch'
+                        debounce={350}
+                        query={{
+                            key: GOOGLE_MAPS_API_KEY,
+                            language: 'en',
+                        }}
+                    />
+                </View>
+            </View>
         </SafeAreaView>
     )
 }

@@ -7,8 +7,9 @@ import Map from '../components/Map';
 import RideOptionsCard from '../components/RideOptionsCard';
 import NavigateCard from '../components/NavigateCard';
 
+//const Stack = createStackNavigator();
+
 const MapScreen = () => {
-    const Stack = createStackNavigator();
 
     return (
         <View>
@@ -18,7 +19,7 @@ const MapScreen = () => {
                 </View>
 
                 <View style={tw`h-1/2`}>
-                    <Stack.Navigator>
+                    {/* <Stack.Navigator>
                         <Stack.Screen 
                             name='NavigateCard'
                             component={NavigateCard}
@@ -33,7 +34,7 @@ const MapScreen = () => {
                                 headerShown: false,
                             }}
                         />
-                    </Stack.Navigator>
+                    </Stack.Navigator> */}
                 </View>
             </SafeAreaView>
         </View>
