@@ -6,7 +6,6 @@ import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplet
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useDispatch } from 'react-redux';
 import tw from 'twrnc';
-import { useUser, useUserUpdate } from '../authProvider/AuthProvider';
 import { setDestination } from '../slices/navSlice';
 
 
@@ -14,8 +13,6 @@ import { setDestination } from '../slices/navSlice';
 const NavigateCard = () => {
     const dispatch = useDispatch()
     const navigation = useNavigation()
-    const user = useUser()
-    const setUser = useUserUpdate()
 
     return (
         <SafeAreaView style={tw`bg-white flex-1`}>
@@ -26,14 +23,10 @@ const NavigateCard = () => {
                         placeholder='Where to?'
                         onPress={(data, details = null) => {
                             dispatch(setDestination({
-                                localtion: details?.geometry.location,
+                                location: details?.geometry.location,
                                 description: data.description,
                             }))
-                            setUser({...user, destination: {
-                                localtion: details?.geometry.location,
-                                description: data.description,
-                            }})
-                            navigation.navigate('Map')
+                            navigation.navigate('RideOptionsCard')
                         }}
                         styles={{
                             container: {

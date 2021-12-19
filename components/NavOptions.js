@@ -14,7 +14,7 @@ const NavOptions = () => {
     return (
         <View style={[{justifyContent: 'center', alignItems: 'center'}, tw`${!origin && 'opacity-40'}`]}>
             <TouchableOpacity 
-                onPress={() => navigation.navigate('Nav')} 
+                onPress={() => navigation.navigate('Map')} 
                 style={tw`border-2 border-black rounded-md p-4 bg-gray-200`}
                 disabled={!origin}
                 >

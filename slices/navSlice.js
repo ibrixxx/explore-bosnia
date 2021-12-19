@@ -15,7 +15,6 @@ export const navSlice = createSlice({
         },
         setDestination: (state, action) => {
             state.destination = action.payload
-            console.log('s ', state.destination)
         },
         setExpectedTime: (state, action) => {
             state.expectedTime = action.payload
