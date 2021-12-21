@@ -7,6 +7,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { useDispatch } from 'react-redux';
 import tw from 'twrnc';
 import { setDestination } from '../slices/navSlice';
+import NavFavorites from './NavFavorites';
 
 
 
@@ -54,6 +55,7 @@ const NavigateCard = () => {
                             language: 'en',
                         }}
                     />
+                    <NavFavorites origin={false} navigation={navigation}/>
                 </View>
             </View>
         </SafeAreaView>

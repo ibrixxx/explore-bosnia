@@ -10,7 +10,7 @@ import NavOptions from '../components/NavOptions';
 import { setOrigin } from '../slices/navSlice';
 
 
-const HomeScreen = () => {
+const HomeScreen = ({navigation}) => {
     const dispatch = useDispatch();
     const user = useUser()
     const setUser = useUserUpdate();
@@ -58,7 +58,7 @@ const HomeScreen = () => {
                     }}
                     />
                     <NavOptions />
-                    <NavFavorites />
+                    <NavFavorites origin={true} navigation={navigation}/>
             </View>
         </SafeAreaView>
     )
