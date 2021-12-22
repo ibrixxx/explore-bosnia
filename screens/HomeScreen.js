@@ -1,35 +1,34 @@
 import { GOOGLE_MAPS_API_KEY } from '@env';
-import React from 'react';
+import React, { useRef } from 'react';
 import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import { Icon } from 'react-native-elements';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { useDispatch } from 'react-redux';
 import tw from 'twrnc';
-import { useUser, useUserUpdate } from '../authProvider/AuthProvider';
 import NavFavorites from '../components/NavFavorites';
 import NavOptions from '../components/NavOptions';
+import { countryScope } from '../constants/constants';
 import { setOrigin } from '../slices/navSlice';
 
 
 const HomeScreen = ({navigation}) => {
     const dispatch = useDispatch();
-    const user = useUser()
-    const setUser = useUserUpdate();
+    const autocomplete = useRef(null)
 
     return (
         <SafeAreaView style={tw`bg-white h-full`}>
             <View>
                 <Text style={tw`text-blue-400 p-10 text-xl font-bold`}>Explore Bosnia</Text>
                 <GooglePlacesAutocomplete
+                    currentLocation={true}
+                    currentLocationLabel={'My current location'}
+                    ref={autocomplete}
                     placeholder='Search'
                     onPress={(data, details = null) => {
                         dispatch(setOrigin({
                             location: details?.geometry.location,
                             description: data.description,
                         }))
-                        setUser({...user, origin: {
-                            location: details?.geometry.location,
-                            description: data.description,
-                        }})
                     }}
                     styles={{
                         container: {
@@ -47,6 +46,15 @@ const HomeScreen = ({navigation}) => {
                             fontSize: 18,
                         },
                     }}
+                    renderRightButton={() => 
+                        <Icon
+                            size={30}
+                            color='gray' 
+                            name='close-outline'
+                            type={'ionicon'}
+                            onPress={() => autocomplete.current.clear()}
+                        />
+                    }
                     fetchDetails={true}
                     enablePoweredByContainer={false}
                     minLength={2}
@@ -55,6 +63,7 @@ const HomeScreen = ({navigation}) => {
                     query={{
                         key: GOOGLE_MAPS_API_KEY,
                         language: 'en',
+                        components: countryScope
                     }}
                     />
                     <NavOptions />
