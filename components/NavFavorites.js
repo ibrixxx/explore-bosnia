@@ -1,10 +1,11 @@
-import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
-import { Icon } from 'react-native-elements'
-import { FlatList, TouchableOpacity } from 'react-native-gesture-handler'
+import * as Location from 'expo-location';
+import React, { useEffect, useState } from 'react';
+import { View } from 'react-native';
+import { FlatList } from 'react-native-gesture-handler';
 import { useDispatch } from 'react-redux';
 import tw from 'twrnc';
-import { setOrigin, setDestination } from '../slices/navSlice';
+import { setDestination, setOrigin } from '../slices/navSlice';
+import FavoritesItem from './FavoritesItem';
 
 
 const data = [
@@ -33,6 +34,31 @@ const data = [
 
 const NavFavorites = ({origin ,navigation}) => {
     const dispatch = useDispatch();
+    const [currentLocation, setCurrentLocation] = useState(null)
+
+
+    useEffect(() => {
+        (async () => {
+          let { status } = await Location.requestForegroundPermissionsAsync();
+          if (status !== 'granted') {
+            setErrorMsg('Permission to access location was denied');
+            return;
+          }
+    
+          let location = await Location.getCurrentPositionAsync({});
+          setCurrentLocation({
+            id: 3,
+            icon: 'locate-outline',
+            name: 'MY CURRENT LOCATION',
+            location: {
+                lat: location.coords.latitude, 
+                lng: location.coords.longitude,
+            },
+            destination: ''
+          });
+        })();
+    }, []);
+
 
     const onPress = (e) => {
         if(origin) {
@@ -52,29 +78,16 @@ const NavFavorites = ({origin ,navigation}) => {
     }
 
     return (
-        <FlatList
-            data={data} 
-            keyExtractor={item => item.id}
-            ItemSeparatorComponent={() => <View style={[tw`bg-gray-200`, {height: 0.5}]} />}
-            renderItem={({item}) => 
-                <TouchableOpacity onPress={() => onPress(item)} style={tw`flex-row p-5 items-center`}>
-                    <Icon 
-                        style={tw`mr-4 rounded-full bg-gray-300 p-3`}
-                        name={item.icon}
-                        type={'ionicon'}
-                        color={'white'}
-                        size={18}
-                    />
-                    <View>
-                        <Text style={tw`font-semibold text-lg`}>{item.name}</Text>
-                        <Text style={tw`text-gray-500`}>{item.destination}</Text>
-                    </View>
-                </TouchableOpacity>
-            }
-        />
+        <View>
+            {currentLocation && <FavoritesItem onPress={onPress} item={currentLocation} />}
+            <FlatList
+                data={data} 
+                keyExtractor={item => item.id}
+                ItemSeparatorComponent={() => <View style={[tw`bg-gray-200`, {height: 0.5}]} />}
+                renderItem={({item}) => <FavoritesItem onPress={onPress} item={item} />}
+            />
+        </View>
     )
 }
 
 export default NavFavorites
-
-const styles = StyleSheet.create({})

@@ -15,13 +15,12 @@ const HomeScreen = ({navigation}) => {
     const dispatch = useDispatch();
     const autocomplete = useRef(null)
 
+
     return (
         <SafeAreaView style={tw`bg-white h-full`}>
             <View>
                 <Text style={tw`text-blue-400 p-10 text-xl font-bold`}>Explore Bosnia</Text>
                 <GooglePlacesAutocomplete
-                    currentLocation={true}
-                    currentLocationLabel={'My current location'}
                     ref={autocomplete}
                     placeholder='Search'
                     onPress={(data, details = null) => {
