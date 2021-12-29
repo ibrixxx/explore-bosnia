@@ -1,6 +1,6 @@
 import { GOOGLE_MAPS_API_KEY } from '@env';
 import React, { useRef } from 'react';
-import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, Text, View } from 'react-native';
 import { Icon } from 'react-native-elements';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { useDispatch } from 'react-redux';
@@ -8,7 +8,7 @@ import tw from 'twrnc';
 import NavFavorites from '../components/NavFavorites';
 import NavOptions from '../components/NavOptions';
 import { countryScope } from '../constants/constants';
-import { setOrigin } from '../slices/navSlice';
+import { setDestination, setOrigin } from '../slices/navSlice';
 
 
 const HomeScreen = ({navigation}) => {
@@ -28,6 +28,7 @@ const HomeScreen = ({navigation}) => {
                             location: details?.geometry.location,
                             description: data.description,
                         }))
+                        dispatch(setDestination(null))
                     }}
                     styles={{
                         container: {
@@ -56,6 +57,7 @@ const HomeScreen = ({navigation}) => {
                     }
                     fetchDetails={true}
                     enablePoweredByContainer={false}
+                    enableHighAccuracyLocation={true}
                     minLength={2}
                     nearbyPlacesAPI='GooglePlacesSearch'
                     debounce={350}
@@ -73,5 +75,3 @@ const HomeScreen = ({navigation}) => {
 }
 
 export default HomeScreen
-
-const styles = StyleSheet.create({})

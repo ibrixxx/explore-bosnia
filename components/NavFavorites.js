@@ -38,25 +38,26 @@ const NavFavorites = ({origin ,navigation}) => {
 
 
     useEffect(() => {
-        (async () => {
-          let { status } = await Location.requestForegroundPermissionsAsync();
-          if (status !== 'granted') {
-            setErrorMsg('Permission to access location was denied');
-            return;
-          }
-    
-          let location = await Location.getCurrentPositionAsync({});
-          setCurrentLocation({
-            id: 3,
-            icon: 'locate-outline',
-            name: 'MY CURRENT LOCATION',
-            location: {
-                lat: location.coords.latitude, 
-                lng: location.coords.longitude,
-            },
-            destination: ''
-          });
-        })();
+        if(origin)
+            (async () => {
+            let { status } = await Location.requestForegroundPermissionsAsync();
+            if (status !== 'granted') {
+                setErrorMsg('Permission to access location was denied');
+                return;
+            }
+        
+            let location = await Location.getCurrentPositionAsync({});
+            setCurrentLocation({
+                id: 3,
+                icon: 'locate-outline',
+                name: 'My current location',
+                location: {
+                    lat: location.coords.latitude, 
+                    lng: location.coords.longitude,
+                },
+                destination: ''
+            });
+            })();
     }, []);
 
 
@@ -66,6 +67,7 @@ const NavFavorites = ({origin ,navigation}) => {
                 location: e.location,
                 description: e.destination,
             }))
+            dispatch(setDestination(null))
             navigation.navigate('Map')
         }
         else {
@@ -79,7 +81,7 @@ const NavFavorites = ({origin ,navigation}) => {
 
     return (
         <View>
-            {currentLocation && <FavoritesItem onPress={onPress} item={currentLocation} />}
+            {currentLocation && origin && <FavoritesItem onPress={onPress} item={currentLocation} />}
             <FlatList
                 data={data} 
                 keyExtractor={item => item.id}

@@ -6,6 +6,7 @@ import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplet
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useDispatch } from 'react-redux';
 import tw from 'twrnc';
+import { countryScope } from '../constants/constants';
 import { setDestination } from '../slices/navSlice';
 import NavFavorites from './NavFavorites';
 
@@ -47,12 +48,14 @@ const NavigateCard = () => {
                         }}
                         fetchDetails={true}
                         enablePoweredByContainer={false}
+                        enableHighAccuracyLocation={true}
                         minLength={2}
                         nearbyPlacesAPI='GooglePlacesSearch'
                         debounce={350}
                         query={{
                             key: GOOGLE_MAPS_API_KEY,
                             language: 'en',
+                            components: countryScope
                         }}
                     />
                     <NavFavorites origin={false} navigation={navigation}/>
