@@ -30,6 +30,7 @@ const data = [
     },
 ]
 
+const CHARGE_RATE = 1.5
 
 const RideOptionsCard = () => {
     const navigation = useNavigation()
@@ -42,7 +43,7 @@ const RideOptionsCard = () => {
                 <TouchableOpacity style={tw`m-5`} onPress={() => navigation.goBack()}>
                     <Icon name={'chevron-left'} type={'fontawesome'} color={'black'}/>
                 </TouchableOpacity>
-                <Text style={tw`text-center m-auto text-xl`}>Select a Ride - {expectedTime?.distance.text}</Text>
+                <Text style={tw`text-center m-auto text-xl`}>Select a Ride - {expectedTime?.distance?.text}</Text>
             </View>
             <FlatList 
                 data={data}
@@ -63,9 +64,18 @@ const RideOptionsCard = () => {
                         />
                         <View style={tw`-ml-6`}>
                             <Text style={tw`text-xl font-semibold`}>{title}</Text>
-                            <Text>{expectedTime?.duration.text} Travel Time</Text>
+                            <Text>{expectedTime?.duration?.text} Travel Time</Text>
                         </View>
-                        <Text style={tw`text-xl`}>$66</Text>
+                        <Text style={tw`text-xl`}>
+                            {
+                                new Intl.NumberFormat('en-gb', {
+                                    style: 'currency',
+                                    currency: 'BAM',
+                                }).format(
+                                    (expectedTime?.duration?.value * CHARGE_RATE * price) / 100
+                                )
+                            }
+                        </Text>
                     </TouchableOpacity>
                 )}
             />
