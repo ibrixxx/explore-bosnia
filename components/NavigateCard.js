@@ -1,7 +1,8 @@
 import { GOOGLE_MAPS_API_KEY } from '@env';
 import { useNavigation } from '@react-navigation/core';
-import React from 'react';
+import React, { useRef } from 'react';
 import { Text, View } from 'react-native';
+import { Icon } from 'react-native-elements';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useDispatch } from 'react-redux';
@@ -15,6 +16,8 @@ import NavFavorites from './NavFavorites';
 const NavigateCard = () => {
     const dispatch = useDispatch()
     const navigation = useNavigation()
+    const autocomplete = useRef(null)
+
 
     return (
         <SafeAreaView style={tw`bg-white flex-1`}>
@@ -22,6 +25,7 @@ const NavigateCard = () => {
             <View style={tw`border-t border-gray-200 flex-shrink`}>
                 <View>
                     <GooglePlacesAutocomplete
+                        ref={autocomplete}
                         placeholder='Where to?'
                         onPress={(data, details = null) => {
                             dispatch(setDestination({
@@ -46,6 +50,17 @@ const NavigateCard = () => {
                                 paddingHorizontal: 20,
                             }
                         }}
+                        renderRightButton={() => 
+                            <View style={{padding: 5, backgroundColor: 'lightgray', height: '90%'}}>
+                                <Icon
+                                    size={30}
+                                    color='gray' 
+                                    name='close-outline'
+                                    type={'ionicon'}
+                                    onPress={() => autocomplete.current.clear()}
+                                />
+                            </View>
+                        }
                         fetchDetails={true}
                         enablePoweredByContainer={false}
                         enableHighAccuracyLocation={true}

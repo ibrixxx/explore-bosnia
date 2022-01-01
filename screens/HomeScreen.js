@@ -47,13 +47,15 @@ const HomeScreen = ({navigation}) => {
                         },
                     }}
                     renderRightButton={() => 
-                        <Icon
-                            size={30}
-                            color='gray' 
-                            name='close-outline'
-                            type={'ionicon'}
-                            onPress={() => autocomplete.current.clear()}
-                        />
+                        <View style={{padding: 5}}>
+                            <Icon
+                                size={30}
+                                color='gray' 
+                                name='close-outline'
+                                type={'ionicon'}
+                                onPress={() => autocomplete.current.clear()}
+                            />
+                        </View>
                     }
                     fetchDetails={true}
                     enablePoweredByContainer={false}

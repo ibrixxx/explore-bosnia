@@ -1,9 +1,8 @@
 {
-  "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
+    "start": "react-native start",
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
     "web": "expo start --web",
     "eject": "expo eject"
   },
@@ -14,7 +13,10 @@
     "@reduxjs/toolkit": "^1.6.2",
     "expo": "~43.0.2",
     "expo-location": "~13.0.4",
+    "expo-splash-screen": "~0.13.5",
     "expo-status-bar": "~1.1.0",
+    "expo-updates": "~0.10.13",
+    "intl": "^1.2.5",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-native": "0.64.3",
@@ -36,5 +38,7 @@
   "devDependencies": {
     "@babel/core": "^7.12.9"
   },
-  "private": true
+  "private": true,
+  "name": "travel-bosnia",
+  "version": "1.0.0"
 }
