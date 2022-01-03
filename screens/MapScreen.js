@@ -1,15 +1,13 @@
+import { useNavigation } from '@react-navigation/core';
 import { createStackNavigator } from '@react-navigation/stack';
-import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
+import { FAB } from 'react-native-paper';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import tw from 'twrnc';
 import Map from '../components/Map';
-import RideOptionsCard from '../components/RideOptionsCard';
 import NavigateCard from '../components/NavigateCard';
-import { TouchableOpacity } from 'react-native-gesture-handler';
-import { Icon } from 'react-native-elements';
-import { useNavigation } from '@react-navigation/core';
-import { FAB } from 'react-native-paper';
+import RideOptionsCard from '../components/RideOptionsCard';
 
 const Stack = createStackNavigator();
 
