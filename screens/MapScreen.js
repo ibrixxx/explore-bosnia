@@ -33,7 +33,7 @@ const MapScreen = () => {
                     style={styles.fab}
                     small
                     icon="menu"
-                    onPress={() => navigation.goBack()}
+                    onPress={() => navigation.openDrawer()}
                 />
 
                 <View style={tw`h-1/2`}>
