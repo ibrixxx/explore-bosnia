@@ -18,7 +18,7 @@ const MapScreen = () => {
     const bottomSheetRef = useRef(null);
 
     // variables
-    const snapPoints = useMemo(() => ['10%', '100%'], []);
+    const snapPoints = useMemo(() => ['10%', '60%'], []);
 
     // callbacks
     const handleSheetChanges = useCallback((index) => {
@@ -36,12 +36,9 @@ const MapScreen = () => {
                     onPress={() => navigation.openDrawer()}
                 />
 
-                <View style={tw`h-1/2`}>
+                <View style={{height: '100%'}}>
                     <Map />
-                </View>
-
-                <View style={tw`h-1/2`}>
-                <BottomSheet
+                    <BottomSheet
                     ref={bottomSheetRef}
                     index={1}
                     snapPoints={snapPoints}
@@ -65,6 +62,32 @@ const MapScreen = () => {
                     </Stack.Navigator>
                 </BottomSheet>
                 </View>
+
+                {/* <View style={tw`h-1/2`}>
+                <BottomSheet
+                    ref={bottomSheetRef}
+                    index={1}
+                    snapPoints={snapPoints}
+                    onChange={handleSheetChanges}
+                >
+                    <Stack.Navigator>
+                        <Stack.Screen 
+                            name='NavigateCard'
+                            component={NavigateCard}
+                            options={{
+                                headerShown: false,
+                            }}
+                        />
+                        <Stack.Screen 
+                            name='RideOptionsCard'
+                            component={RideOptionsCard}
+                            options={{
+                                headerShown: false,
+                            }}
+                        />
+                    </Stack.Navigator>
+                </BottomSheet>
+                </View> */}
 
                 {/* <View style={tw`h-1/2`}>
                     <Stack.Navigator>
