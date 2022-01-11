@@ -39,7 +39,8 @@
     "react-native-share": "^7.3.2",
     "react-native-web": "0.17.1",
     "react-redux": "^7.2.6",
-    "twrnc": "^2.0.7"
+    "twrnc": "^2.0.7",
+    "react-native-webview": "11.13.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"

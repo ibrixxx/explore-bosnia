@@ -1,14 +1,13 @@
+import BottomSheet from '@gorhom/bottom-sheet';
 import { useNavigation } from '@react-navigation/core';
 import { createStackNavigator } from '@react-navigation/stack';
 import React, { useCallback, useMemo, useRef } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { FAB } from 'react-native-paper';
+import { View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import tw from 'twrnc';
 import Map from '../components/Map';
+import MenuBars from '../components/MenuBars';
 import NavigateCard from '../components/NavigateCard';
 import RideOptionsCard from '../components/RideOptionsCard';
-import BottomSheet from '@gorhom/bottom-sheet';
 
 const Stack = createStackNavigator();
 
@@ -28,13 +27,8 @@ const MapScreen = () => {
     return (
         <View>          
             <SafeAreaView>
-                
-                <FAB
-                    style={styles.fab}
-                    small
-                    icon="menu"
-                    onPress={() => navigation.openDrawer()}
-                />
+
+                <MenuBars navigation={navigation} />
 
                 <View style={{height: '100%'}}>
                     <Map />
@@ -113,14 +107,3 @@ const MapScreen = () => {
 }
 
 export default MapScreen
-
-const styles = StyleSheet.create({
-    fab: {
-      position: 'absolute',
-      margin: 16,
-      left: 0,
-      top: 20,
-      backgroundColor: 'white',
-      zIndex: 100,
-    },
-  })

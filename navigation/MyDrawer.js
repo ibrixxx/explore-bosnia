@@ -7,6 +7,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { SimpleLineIcons } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons'; 
+import OrderFoodScreen from '../screens/OrderFoodScreen';
 
 const Drawer = createDrawerNavigator();
 
@@ -66,7 +67,7 @@ const MyDrawer = () => {
       />
       <Drawer.Screen
         name="Food"
-        component={MapScreen}
+        component={OrderFoodScreen}
         options={{ drawerLabel: 'Order food', ...screenOptions, drawerIcon: () => <Ionicons name='fast-food-outline' size={30} color={'black'} /> }}
       />
       <Drawer.Screen

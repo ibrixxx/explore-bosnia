@@ -1,12 +1,11 @@
 import { GOOGLE_MAPS_API_KEY } from '@env';
-import { DrawerActions } from '@react-navigation/native';
 import React, { useRef } from 'react';
-import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView, Text, View } from 'react-native';
 import { Icon } from 'react-native-elements';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
-import { FAB } from 'react-native-paper';
 import { useDispatch } from 'react-redux';
 import tw from 'twrnc';
+import MenuBars from '../components/MenuBars';
 import NavFavorites from '../components/NavFavorites';
 import NavOptions from '../components/NavOptions';
 import { countryScope } from '../constants/constants';
@@ -20,12 +19,7 @@ const HomeScreen = ({navigation}) => {
 
     return (
         <SafeAreaView style={tw`bg-white h-full`}>
-            <FAB
-                style={styles.fab}
-                small
-                icon="menu"
-                onPress={() => navigation.openDrawer()}
-            />
+            <MenuBars navigation={navigation} />
             <View>
                 <Text style={tw`text-blue-400 text-center p-10 text-xl font-bold`}>Explore Bosnia</Text>
                 <GooglePlacesAutocomplete
@@ -85,15 +79,3 @@ const HomeScreen = ({navigation}) => {
 }
 
 export default HomeScreen
-
-
-const styles = StyleSheet.create({
-    fab: {
-      position: 'absolute',
-      margin: 16,
-      left: 0,
-      top: 20,
-      backgroundColor: 'white',
-      zIndex: 100,
-    },
-  })
