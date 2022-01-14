@@ -8,6 +8,7 @@ import { FontAwesome5 } from '@expo/vector-icons';
 import { SimpleLineIcons } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons'; 
 import OrderFoodScreen from '../screens/OrderFoodScreen';
+import DriversScreen from '../screens/DriversScreen';
 
 const Drawer = createDrawerNavigator();
 
@@ -57,8 +58,8 @@ const MyDrawer = () => {
       />
       <Drawer.Screen
         name="Drivers"
-        component={MapScreen}
-        options={{ drawerLabel: 'Drivers', ...screenOptions, drawerIcon: () => <Ionicons name='car-sport-sharp' size={30} color={'black'} /> }}
+        component={DriversScreen}
+        options={{ drawerLabel: 'Drivers', ...screenOptions, headerShown:true, drawerIcon: () => <Ionicons name='car-sport-sharp' size={30} color={'black'} /> }}
       />
       <Drawer.Screen
         name="Billing"
