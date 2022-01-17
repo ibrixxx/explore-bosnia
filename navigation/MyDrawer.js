@@ -9,6 +9,9 @@ import { SimpleLineIcons } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons'; 
 import OrderFoodScreen from '../screens/OrderFoodScreen';
 import DriversScreen from '../screens/DriversScreen';
+import BillingScreen from '../screens/BillingScreen';
+import PlacesScreen from '../screens/PlacesScreen';
+import SoulScreen from '../screens/SoulScreen'
 
 const Drawer = createDrawerNavigator();
 
@@ -29,6 +32,11 @@ const CustomDrawerContent = (props) => {
       <DrawerContentScrollView {...props} style={{height: '100%'}}>
         <DrawerItemList {...props} />
       </DrawerContentScrollView>
+        <DrawerItem
+            label="Settings"
+            icon={() => <Ionicons name='settings-outline' size={24} color={'black'} />}
+            onPress={() => Linking.openURL('https://quran.com/61')}
+        />
         <DrawerItem
           label="Help"
           icon={() => <MaterialIcons name="help-outline" size={24} color="black" />}
@@ -63,7 +71,7 @@ const MyDrawer = () => {
       />
       <Drawer.Screen
         name="Billing"
-        component={MapScreen}
+        component={BillingScreen}
         options={{ drawerLabel: 'Billing', ...screenOptions, drawerIcon: () => <Ionicons name='card' size={30} color={'black'} /> }}
       />
       <Drawer.Screen
@@ -73,18 +81,13 @@ const MyDrawer = () => {
       />
       <Drawer.Screen
         name="Places"
-        component={MapScreen}
+        component={PlacesScreen}
         options={{ drawerLabel: 'Places', ...screenOptions, drawerIcon: () => <Ionicons name='map-sharp' size={30} color={'black'} /> }}
       />
       <Drawer.Screen
         name="Masjids"
-        component={MapScreen}
+        component={SoulScreen}
         options={{ drawerLabel: 'Masjids', ...screenOptions, drawerIcon: () => <FontAwesome5 name='mosque' size={24} color={'black'} /> }}
-      />
-      <Drawer.Screen
-        name="Settings"
-        component={MapScreen}
-        options={{ drawerLabel: 'Settings', ...screenOptions, drawerIcon: () => <Ionicons name='settings' size={30} color={'black'} /> }}
       />
     </Drawer.Navigator>
   );

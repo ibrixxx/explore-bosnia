@@ -6,7 +6,7 @@ import tw from 'twrnc';
 
 const FavoritesItem = ({onPress, item}) => {
     return (
-        <TouchableOpacity onPress={() => onPress(item)} style={tw`flex-row p-5 items-center`}>
+        <TouchableOpacity onPress={() => onPress(item)} style={tw`flex-row p-5 items-center ${!item && 'opacity-40'}`}>
             <Icon 
                 style={tw`mr-4 rounded-full bg-gray-300 p-3`}
                 name={item.icon}

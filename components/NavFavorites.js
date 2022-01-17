@@ -2,6 +2,7 @@ import * as Location from 'expo-location';
 import React, { useEffect, useState } from 'react';
 import { View } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
+import { ActivityIndicator } from 'react-native-paper';
 import { useDispatch } from 'react-redux';
 import tw from 'twrnc';
 import { setDestination, setOrigin } from '../slices/navSlice';
@@ -81,7 +82,7 @@ const NavFavorites = ({origin ,navigation}) => {
 
     return (
         <View>
-            {currentLocation && origin && <FavoritesItem onPress={onPress} item={currentLocation} />}
+            {currentLocation?  origin && <FavoritesItem onPress={onPress} item={currentLocation} /> : origin && <ActivityIndicator size={40} color={'dodgerblue'} style={{left: 0,right: 0,bottom: 0,top: 16}}/>}
             <FlatList
                 data={data} 
                 keyExtractor={item => item.id}

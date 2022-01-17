@@ -5,19 +5,30 @@ import { AntDesign } from '@expo/vector-icons';
 
 const DriversItem = () => {
     return (
-        <View style={{width: '100%', flex: 1, backgroundColor: 'yellow'}}>
-            <TouchableOpacity style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-                <Avatar.Icon style={{margin: '5%', backgroundColor: 'black'}} size={40} icon={() => <AntDesign name="user" size={24} color="white" />}/>
+        <View style={{
+            width: '100%', 
+            flex: 1, 
+            backgroundColor: 'yellow', 
+            marginTop: '15%', 
+            borderRadius: 14, 
+            padding: '10%', 
+            shadowColor: '#000',
+            shadowOffset: { width: 0, height: 1 },
+            shadowOpacity: 0.8,
+            shadowRadius: 1, 
+            elevation: 14}
+        }>
+            <TouchableOpacity style={{ justifyContent: 'space-between', alignItems: 'center' }}>
+                <Avatar.Icon style={{margin: '5%', backgroundColor: 'black'}} size={88} icon={() => <AntDesign name="user" size={24} color="white" />}/>
                 <View style={{justifyContent: 'center'}}>
                     <Title>Name Surname</Title>
                     <Caption>age</Caption>
                 </View>
-                <View style={{justifyContent: 'center', marginRight: '5%'}}>
+                <View style={{justifyContent: 'center'}}>
                     <Text>udaljenost</Text>
                     <Caption>star rating</Caption>
                 </View>
             </TouchableOpacity>
-            <Divider style={{width: '100%', height: 0.5, backgroundColor: 'gray'}} />
         </View>
     )
 }

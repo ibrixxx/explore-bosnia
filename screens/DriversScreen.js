@@ -19,11 +19,13 @@ const data = [{
 
 const DriversScreen = () => {
     return (
-        <SafeAreaView> 
+        <SafeAreaView style={{ alignItems: 'center'}}> 
             <FlatList 
                 keyExtractor={item => item.id}
                 data={data}
                 renderItem={({item}) => <DriversItem />}
+                showsHorizontalScrollIndicator={false}
+                showsVerticalScrollIndicator={false}
             />
         </SafeAreaView>
         )

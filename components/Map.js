@@ -12,12 +12,17 @@ const Map = () => {
     const mapRef = useRef(null) 
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        if(!origin || !destination)
+    useEffect(() => { 
+        if(!destination){
+            setTimeout(() => mapRef.current.fitToSuppliedMarkers(['origin'], 
+            {
+                edgePadding: {top: 69, right: 69, bottom: 1000, left: 69},
+            }), 500)
             return
+        }
         setTimeout(() => mapRef.current.fitToSuppliedMarkers(['origin', 'destination'], 
         {
-            edgePadding: {top: 69, right: 69, bottom: 69, left: 69},
+            edgePadding: {top: 69, right: 69, bottom: 1000, left: 69},
         }), 500)    
     }, [destination, origin])
 

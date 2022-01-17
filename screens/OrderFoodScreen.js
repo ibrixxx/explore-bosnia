@@ -15,7 +15,7 @@ const OrderFoodScreen = () => {
                 onLoadEnd={() => setFirstRender(false)}
                 source={{uri: 'https://korpa.ba/'}}
             />
-            {firstRender && (<ActivityIndicator size={60} color={'firebrick'} style={{position: 'absolute',left: 0,right: 0,bottom: 0,top: 0}}/>)}
+            {firstRender && (<ActivityIndicator size={60} color={'dodgerblue'} style={{position: 'absolute',left: 0,right: 0,bottom: 0,top: 0}}/>)}
         </SafeAreaView>    
     )
 }
