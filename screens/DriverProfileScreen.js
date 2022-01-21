@@ -7,13 +7,14 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Rating } from 'react-native-ratings';
 import { MaterialIcons } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons'; 
+import DriverOffers from '../driverScreens/DriverOffers';
 
 const Tab = createMaterialTopTabNavigator();
 
 const DriverProfileScreen = () => {
   return (
     <SafeAreaView style={{height: '100%'}}>
-      <View style={{ flex: 1, flexDirection: 'row'}}>
+      <View style={{ flex: 1, flexDirection: 'row', backgroundColor: '#b3edff'}}>
         <View style={{borderWidth: 5, borderColor: 'dodgerblue', borderRadius: 14, width: '30%', height: '90%', margin: '2%'}}>
             <Image source={{uri: 'https://cdn-1.motorsport.com/static/img/amp/5200000/5280000/5281000/5281700/5281738/s6_1000229/1000229.jpg'}} style={{width: '100%', height: '100%', borderRadius: 9}}/>
         </View>
@@ -24,6 +25,7 @@ const DriverProfileScreen = () => {
                 imageSize={14}
                 readonly={true}
                 startingValue={5}
+                tintColor='#b3edff'
                 style={{marginTop: 5}}
             />
         </View>
@@ -36,7 +38,7 @@ const DriverProfileScreen = () => {
       <Divider style={{width: '100%', height: 4, backgroundColor: 'dodgerblue'}} />
       <View style={{flex: 6}}>
         <Tab.Navigator>
-            <Tab.Screen name="RouteOffers" component={SoulScreen} />
+            <Tab.Screen name="RouteOffers" component={DriverOffers} />
             <Tab.Screen name="AboutDriver" component={SoulScreen} />
             <Tab.Screen name="DriverReviews" component={SoulScreen} />
         </Tab.Navigator>
