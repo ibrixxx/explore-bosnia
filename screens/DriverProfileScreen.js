@@ -8,6 +8,7 @@ import { Rating } from 'react-native-ratings';
 import { MaterialIcons } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons'; 
 import DriverOffers from '../driverScreens/DriverOffers';
+import AboutDriver from '../driverScreens/AboutDriver';
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -38,9 +39,9 @@ const DriverProfileScreen = () => {
       <Divider style={{width: '100%', height: 4, backgroundColor: 'dodgerblue'}} />
       <View style={{flex: 6}}>
         <Tab.Navigator>
-            <Tab.Screen name="RouteOffers" component={DriverOffers} />
-            <Tab.Screen name="AboutDriver" component={SoulScreen} />
-            <Tab.Screen name="DriverReviews" component={SoulScreen} />
+            <Tab.Screen name="RouteOffers" component={DriverOffers} options={{tabBarLabel: 'offers'}}/>
+            <Tab.Screen name="AboutDriver" component={AboutDriver} options={{tabBarLabel: 'about'}}/>
+            <Tab.Screen name="DriverReviews" component={SoulScreen} options={{tabBarLabel: 'reviews'}}/>
         </Tab.Navigator>
       </View>  
     </SafeAreaView>
