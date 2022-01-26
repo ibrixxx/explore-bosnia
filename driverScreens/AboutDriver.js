@@ -1,12 +1,12 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { DataTable, Title } from 'react-native-paper';
+import { Text, View } from 'react-native';
+import { DataTable } from 'react-native-paper';
 import { Rating } from 'react-native-ratings';
 
 const AboutDriver = () => {
   return (
     <View>
-        <DataTable style={{backgroundColor: 'white'}}>
+        <DataTable style={{backgroundColor: 'white', height: '100%'}}>
             <DataTable.Row>
                 <DataTable.Cell></DataTable.Cell>
                 <DataTable.Cell></DataTable.Cell>
@@ -36,8 +36,8 @@ const AboutDriver = () => {
                 <DataTable.Cell><Rating imageSize={14} readonly={true} startingValue={5} tintColor='white' style={{marginTop: 5}}/></DataTable.Cell>
             </DataTable.Row>
             <DataTable.Row>
-                <DataTable.Cell><Text>Hometown</Text></DataTable.Cell>
-                <DataTable.Cell><Text style={{fontWeight: 'bold'}}>Sarajevo</Text></DataTable.Cell>
+                <DataTable.Cell><Text>Languages</Text></DataTable.Cell>
+                <DataTable.Cell><Text style={{fontWeight: 'bold'}}>Bosnian, English, Arabic</Text></DataTable.Cell>
             </DataTable.Row>
         </DataTable>
     </View>
@@ -45,6 +45,3 @@ const AboutDriver = () => {
 };
 
 export default AboutDriver;
-
-const styles = StyleSheet.create({
-});

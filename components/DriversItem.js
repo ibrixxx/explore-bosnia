@@ -11,7 +11,7 @@ const DriversItem = () => {
         <View style={{
             width: '100%', 
             flex: 1, 
-            backgroundColor: 'yellow', 
+            backgroundColor: 'white', 
             marginTop: '15%', 
             borderRadius: 14, 
             padding: '10%', 

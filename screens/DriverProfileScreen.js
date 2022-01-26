@@ -9,6 +9,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons'; 
 import DriverOffers from '../driverScreens/DriverOffers';
 import AboutDriver from '../driverScreens/AboutDriver';
+import DriverReviews from '../driverScreens/DriverReviews';
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -41,7 +42,7 @@ const DriverProfileScreen = () => {
         <Tab.Navigator>
             <Tab.Screen name="RouteOffers" component={DriverOffers} options={{tabBarLabel: 'offers'}}/>
             <Tab.Screen name="AboutDriver" component={AboutDriver} options={{tabBarLabel: 'about'}}/>
-            <Tab.Screen name="DriverReviews" component={SoulScreen} options={{tabBarLabel: 'reviews'}}/>
+            <Tab.Screen name="DriverReviews" component={DriverReviews} options={{tabBarLabel: 'reviews'}}/>
         </Tab.Navigator>
       </View>  
     </SafeAreaView>
