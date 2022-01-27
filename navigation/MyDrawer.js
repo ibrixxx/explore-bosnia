@@ -12,6 +12,7 @@ import DriversScreen from '../screens/DriversScreen';
 import BillingScreen from '../screens/BillingScreen';
 import PlacesScreen from '../screens/PlacesScreen';
 import SoulScreen from '../screens/SoulScreen'
+import { FontAwesome } from '@expo/vector-icons'; 
 
 const Drawer = createDrawerNavigator();
 
@@ -67,7 +68,12 @@ const MyDrawer = () => {
       <Drawer.Screen
         name="Drivers"
         component={DriversScreen}
-        options={{ drawerLabel: 'Drivers', ...screenOptions, headerShown:true, drawerIcon: () => <Ionicons name='car-sport-sharp' size={30} color={'black'} /> }}
+        options={{ drawerLabel: 'Drivers', ...screenOptions, headerShown:true, drawerIcon: () => <FontAwesome name="group" size={27} color="black" /> }}
+      />
+      <Drawer.Screen
+        name="Cars"
+        component={DriversScreen}
+        options={{ drawerLabel: 'Cars', ...screenOptions, headerShown:true, drawerIcon: () => <Ionicons name='car-sport-sharp' size={30} color={'black'} /> }}
       />
       <Drawer.Screen
         name="Billing"

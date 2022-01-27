@@ -5,6 +5,8 @@ import tw from 'twrnc';
 const CHARGE_RATE = 1.5
 
 const DriverOptionsList = ({id, item, title, price, carImage, expectedTime, selectedItem, onPress}) => {
+    const priceCalculated = (expectedTime?.duration?.value * CHARGE_RATE * price) / 100
+    
     return (
         <TouchableOpacity 
             onPress={() => onPress(item)}
@@ -31,7 +33,7 @@ const DriverOptionsList = ({id, item, title, price, carImage, expectedTime, sele
                         (expectedTime?.duration?.value * CHARGE_RATE * price) / 100
                     )
                 } */}
-                {'$ ' + (expectedTime?.duration?.value * CHARGE_RATE * price) / 100}
+                {'$ ' + priceCalculated.toFixed(2)}
             </Text>
         </TouchableOpacity>
     )
